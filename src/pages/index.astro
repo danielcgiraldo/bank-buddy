@@ -1,7 +1,7 @@
 ---
 import Gradient from "../components/Gradient.astro";
 import Layout from "../layouts/Layout.astro";
-import SimulatorComponent from "../components/simulator";
+import Content from "../ui/content";
 ---
 
 <Layout title="Simulador de Interes EA (Efectivo Anual)">
@@ -10,9 +10,7 @@ import SimulatorComponent from "../components/simulator";
             class="relative isolate w-full h-full flex flex-col items-center justify-center p-4"
         >
             <Gradient />
-            <SimulatorComponent client:load />
+           <Content client:load />
         </div>
     </main>
 </Layout>
-
-<style></style>
