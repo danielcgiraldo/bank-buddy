@@ -14,7 +14,7 @@ export default function MainNavigation({
         return <></>;
     } else {
         return (
-            <ul className="text-white text-sm flex gap-2">
+            <ul className="text-white text-xs flex gap-2">
                 <li className="bg-white/10 rounded-md hover:bg-white/30 transition-colors flex align-middle">
                     <button className="p-3 pointer [&>*]:h-3.5 [&>*]:w-auto hover:opacity-100 opacity-50 transition-opacity">
                         <HomeIcon />
