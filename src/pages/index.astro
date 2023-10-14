@@ -1,16 +1,17 @@
 ---
-import Gradient from "../components/Gradient.astro";
+import Content from "@/components/content";
 import Layout from "../layouts/Layout.astro";
-import Content from "../ui/content";
+import { Button } from "@/components/ui/button";
 ---
 
-<Layout title="Simulador de Interes EA (Efectivo Anual)">
-    <main class="h-screen w-screen bg-gray-900 overflow-hidden">
-        <div
-            class="relative isolate w-full h-full flex flex-col items-center justify-center p-4 pt-10"
-        >
-            <Gradient />
-           <Content client:load />
+<Layout title="Welcome to Astro.">
+    <main class="w-full">
+        <div class="flex items-center justify-between space-y-2">
+            <h2 class="text-3xl font-bold tracking-tight">Dashboard</h2>
+            <div class="flex items-center space-x-2">
+                <Button>Download</Button>
+            </div>
         </div>
+        <Content client:load />
     </main>
 </Layout>
