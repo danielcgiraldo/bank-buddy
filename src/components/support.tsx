@@ -20,9 +20,10 @@ import {
 
 export function Support() {
 
-    const openLink = (ev) => {
-        const url = ev.target.dataset.url;
-        const options = ev.target.dataset.options;
+    const openLink = (ev: Event) => {
+        const target = ev.target as HTMLElement;
+        const url = target.dataset.url;
+        const options = target.dataset.options;
         if (url) {
             if (options) {
                 window.open(url, "_blank", options);

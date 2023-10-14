@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import { addMonths, format } from "date-fns"
-import { es } from 'date-fns/locale';
+import { es } from 'date-fns/locale/index.js';
 
 import { cn } from "@/lib/utils"
 import type { DateRange } from "react-day-picker"
