@@ -14,12 +14,7 @@ import {
     DropdownMenuGroup,
     DropdownMenuItem,
     DropdownMenuLabel,
-    DropdownMenuPortal,
     DropdownMenuSeparator,
-    DropdownMenuShortcut,
-    DropdownMenuSub,
-    DropdownMenuSubContent,
-    DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
@@ -42,7 +37,7 @@ export function Support() {
             navigator.share({
                 title: "FinData",
                 text: "FinData",
-                url: "https://findata.app",
+                url: "https://findata.vercel.app/",
             })
                 .then(() => console.log("Successful share"))
                 .catch((error) => console.log("Error sharing", error));
