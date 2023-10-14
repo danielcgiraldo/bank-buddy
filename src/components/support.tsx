@@ -51,7 +51,7 @@ export function Support() {
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <Button>
-                    <LifeBuoy className="mr-2 h-4 w-4" /> Support
+                    <LifeBuoy className="mr-2 h-4 w-4" /> Soporte
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56">
