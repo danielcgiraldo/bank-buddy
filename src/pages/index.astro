@@ -2,6 +2,7 @@
 import Content from "@/components/content";
 import Layout from "../layouts/Layout.astro";
 import { Button } from "@/components/ui/button";
+import { Support } from "@/components/support";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -9,7 +10,7 @@ import { Button } from "@/components/ui/button";
         <div class="flex items-center justify-between space-y-2">
             <h2 class="text-3xl font-bold tracking-tight">Dashboard</h2>
             <div class="flex items-center space-x-2">
-                <Button>Download</Button>
+                <Support client:load>
             </div>
         </div>
         <Content client:load />
