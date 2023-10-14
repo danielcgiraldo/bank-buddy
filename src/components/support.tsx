@@ -27,7 +27,12 @@ export function Support() {
 
     const openLink = (ev) => {
         const url = ev.target.dataset.url;
+        const options = ev.target.dataset.options;
         if (url) {
+            if (options) {
+                window.open(url, "_blank", options);
+                return;
+            }
             window.open(url, "_blank");
         }
     }
@@ -66,19 +71,19 @@ export function Support() {
                 <DropdownMenuGroup>
                     <DropdownMenuItem onSelect={openLink} data-url="https://github.com/danielcgiraldo/findata">
                         <Github className="mr-2 h-4 w-4" />
-                        <span>GitHub</span>
+                        <span>Contribuir</span>
                     </DropdownMenuItem>
-                    <DropdownMenuItem onSelect={openLink} data-url="https://github.com/danielcgiraldo/findata">
+                    <DropdownMenuItem onSelect={openLink} data-url="https://github.com/danielcgiraldo/findata/issues">
                         <Flag className="mr-2 h-4 w-4" />
                         <span>Reportar Problema</span>
                     </DropdownMenuItem>
-                    <DropdownMenuItem onSelect={openLink} data-url="https://github.com/danielcgiraldo/findata">
+                    <DropdownMenuItem onSelect={openLink} data-options="width=500,height=600" data-url="https://www.paypal.com/donate/?hosted_button_id=VUL8F5NECLHK6">
                         <Heart className="mr-2 h-4 w-4" />
                         <span>Donar</span>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onSelect={openLink} data-url="https://github.com/danielcgiraldo/findata">
+                <DropdownMenuItem onSelect={openLink} data-url="https://docs.google.com/forms/d/e/1FAIpQLSd8T_7-NArBBDAiuEQNe3VwJ7Fc1iZHXYtYgKKBiLD3JHW57Q/viewform?usp=sf_link">
                     <MessageSquare className="mr-2 h-4 w-4" />
                     <span>Contáctanos</span>
                 </DropdownMenuItem>
