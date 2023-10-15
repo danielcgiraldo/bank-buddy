@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Support } from "@/ui/support";
+---
+
+<Layout title="FinData: Herramientas Financieras">
+    <main class="w-full">
+        <div
+            class="flex items-center justify-between space-y-2 mb-4 md:mb-2 mb:mt-2"
+        >
+            <a
+                href="/"
+                class="text-white/50 hover:text-white transition-colors"
+            >
+                <h2 class="text-2xl font-bold tracking-tight">FinData</h2>
+            </a>
+            <Support client:load />
+        </div>
+        <div class="max-w-3xl mx-auto w-full py-7">
+            <h1 class="scroll-m-20 text-4xl font-bold tracking-tight">Términos y Condiciones</h1>
+            <span class="text-sm text-muted-foreground">Fecha de Actualización: Octubre 1, 2023</span>
+            <p class="leading-7 mt-4">
+                Estos Términos y Condiciones ("Términos") establecen las disposiciones que rigen el acceso y el uso de la plataforma Findata, incluyendo su interfaz de programación de aplicaciones (API), así como cualquier información, servicios, datos y productos proporcionados por Findata.
+            </p>
+        </div>
+    </main>
+</Layout>

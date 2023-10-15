@@ -1,0 +1,61 @@
+---
+import "@/styles/globals.css";
+import Footer from "@/ui/footer";
+interface Props {
+    title: string;
+    description: string;
+    update: string;
+}
+
+const { title, description, update } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="description" content={description} />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+        <!-- Open Graph Meta -->
+        <meta property="og:title" content={"FinData: " + title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content="/og-image.jpg" />
+
+        <meta name="generator" content={Astro.generator} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <title>{"FinData: " + title}</title>
+    </head>
+    <body>
+        <div class="w-full h-full p-5 flex justify-center">
+            <div class="md:px-10 max-w-7xl w-full">
+                <main class="w-full">
+                    <div
+                        class="flex items-center justify-between space-y-2 mb-4 md:mb-2 mb:mt-2"
+                    >
+                        <a
+                            href="/"
+                            class="text-white/50 hover:text-white transition-colors"
+                        >
+                            <h2 class="text-2xl font-bold tracking-tight">FinData</h2>
+                        </a>
+                        <Support client:load />
+                    </div>
+                    <div class="max-w-3xl mx-auto w-full py-7">
+                        <h1 class="scroll-m-20 text-4xl font-bold tracking-tight">{title}</h1>
+                        <span class="text-sm text-muted-foreground">Fecha de Actualización: {update}</span>
+                        <slot />
+                    </div>
+                </main>
+                
+                <Footer />
+            </div>
+        </div>
+    </body>
+</html>
