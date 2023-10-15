@@ -1,26 +1,22 @@
 ---
 import "@/styles/globals.css";
 import Footer from "@/ui/footer";
-interface Props {
-    title: string;
-    description: string;
-    update: string;
-}
+import { Support } from "@/ui/support";
 
-const { title, description, update } = Astro.props;
+const { frontmatter } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
-        <meta name="description" content={description} />
+        <meta name="description" content={frontmatter.description} />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
         <!-- Open Graph Meta -->
-        <meta property="og:title" content={"FinData: " + title} />
-        <meta property="og:description" content={description} />
+        <meta property="og:title" content={"FinData: " + frontmatter.title} />
+        <meta property="og:description" content={frontmatter.description} />
         <meta property="og:image" content="/og-image.jpg" />
 
         <meta name="generator" content={Astro.generator} />
@@ -30,7 +26,7 @@ const { title, description, update } = Astro.props;
             href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
             rel="stylesheet"
         />
-        <title>{"FinData: " + title}</title>
+        <title>{"FinData: " + frontmatter.title}</title>
     </head>
     <body>
         <div class="w-full h-full p-5 flex justify-center">
@@ -47,11 +43,11 @@ const { title, description, update } = Astro.props;
                         </a>
                         <Support client:load />
                     </div>
-                    <div class="max-w-3xl mx-auto w-full py-7">
-                        <h1 class="scroll-m-20 text-4xl font-bold tracking-tight">{title}</h1>
-                        <span class="text-sm text-muted-foreground">Fecha de Actualización: {update}</span>
+                    <article class="max-w-3xl mx-auto w-full py-7 article_content">
+                        <h1 class="scroll-m-20 text-4xl font-bold tracking-tight">{frontmatter.title}</h1>
+                        <span class="text-sm text-muted-foreground">Fecha de Actualización: {frontmatter.update}</span>
                         <slot />
-                    </div>
+                    </article>
                 </main>
                 
                 <Footer />
@@ -59,3 +55,18 @@ const { title, description, update } = Astro.props;
         </div>
     </body>
 </html>
+
+<style is:global>
+    .article_content p {
+        margin-top: 1rem;
+    }
+    .article_content p:first-of-type {
+        margin-top: 3rem;
+    }
+
+    .article_content h3 {
+        margin-top: 2rem;
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+</style>
