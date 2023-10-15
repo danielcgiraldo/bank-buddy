@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { Support } from "@/ui/support";
 import ApiForm from "@/ui/api-form";
+import { Toaster } from "@/components/ui/toaster"
 ---
 
 <Layout title="FinData: Acceso a la API">
@@ -21,4 +22,5 @@ import ApiForm from "@/ui/api-form";
             <ApiForm client:load />
         </div>
     </main>
+    <Toaster client:load/>
 </Layout>
