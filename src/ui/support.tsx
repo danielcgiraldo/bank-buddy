@@ -100,7 +100,7 @@ export function Support() {
                     </DropdownMenuItem>
                     <DropdownMenuItem
                         onSelect={openLink}
-                        data-url="https://docs.google.com/forms/d/e/1FAIpQLSd8T_7-NArBBDAiuEQNe3VwJ7Fc1iZHXYtYgKKBiLD3JHW57Q/viewform?usp=sf_link"
+                        data-url="/form"
                     >
                         <MessageSquare className="mr-2 h-4 w-4" />
                         <span>Contáctanos</span>

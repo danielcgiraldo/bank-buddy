@@ -41,8 +41,8 @@ export default function ApiForm() {
         
     };
     return (
-        <Card className="max-w-lg">
-            <form action="/api/requestAPI" onSubmit={submit} method="POST">
+        <Card className="max-w-md w-full">
+            <form action="/v1/requestAPI" onSubmit={submit} method="POST">
                 <CardHeader>
                     <CardTitle>Credenciales API</CardTitle>
                     <CardDescription>
