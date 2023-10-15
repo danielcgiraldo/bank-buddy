@@ -1,4 +1,4 @@
-import { Button } from "../ui/button";
+import { Button } from "../components/ui/button";
 import {
     Card,
     CardContent,
@@ -6,25 +6,25 @@ import {
     CardFooter,
     CardHeader,
     CardTitle,
-} from "../ui/card";
-import DatePickerWithRange from "../ui/date-picker-with-range";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
+} from "../components/ui/card";
+import DatePickerWithRange from "../components/ui/date-picker-with-range";
+import { Input } from "../components/ui/input";
+import { Label } from "../components/ui/label";
 import {
     Select,
     SelectContent,
     SelectItem,
     SelectTrigger,
     SelectValue,
-} from "../ui/select";
-import { Textarea } from "../ui/textarea";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../ui/tooltip";
+} from "../components/ui/select";
+import { Textarea } from "../components/ui/textarea";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../components/ui/tooltip";
 
 export default function LoanAddon() {
     return (
         <>
-            <div className="flex gap-4">
-                <div className="w-7/12">
+            <div className="flex flex-col md:flex-row gap-4">
+                <div className="w-full md:w-7/12">
                     <Card>
                         <CardHeader>
                             <CardTitle>Simulador de Crédito</CardTitle>
@@ -103,7 +103,7 @@ export default function LoanAddon() {
                         </CardFooter>
                     </Card>
                 </div>
-                <div className="w-5/12">
+                <div className="w-full md:w-5/12">
                     <div className="w-full h-10 bg-white"></div>
                 </div>
             </div>

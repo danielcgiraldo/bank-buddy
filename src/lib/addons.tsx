@@ -1,4 +1,4 @@
-import LoanAddon from "@/components/addons/loan";
+import LoanAddon from "@/addons/loan";
 
 export const ADDONS = [
     {
