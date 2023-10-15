@@ -11,9 +11,15 @@ const { title } = Astro.props;
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
-        <meta name="description" content="Astro description" />
+        <meta name="description" content="Findata: Tu portal financiero completo con los mejores CDTs, cuentas de ahorro, indicadores económicos, simuladores y más" />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+        <!-- Open Graph Meta -->
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content="Findata: Tu portal financiero completo con los mejores CDTs, cuentas de ahorro, indicadores económicos, simuladores y más" />
+        <meta property="og:image" content="/og-image.jpg" />
+
         <meta name="generator" content={Astro.generator} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
