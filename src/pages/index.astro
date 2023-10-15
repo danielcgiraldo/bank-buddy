@@ -1,19 +1,17 @@
 ---
-import Content from "@/components/content";
+import IndexContent from "@/components/index";
 import Layout from "../layouts/Layout.astro";
-import { Button } from "@/components/ui/button";
 import { Support } from "@/ui/support";
 ---
 
 <Layout title="FinData: Herramientas Financieras">
     <main class="w-full">
-        <div class="flex items-center justify-between space-y-2">
-            <h2 class="text-3xl font-bold tracking-tight">FinData</h2>
-            <div class="flex items-center space-x-2">
-                <Support client:load>
-            </div>
+        <div class="flex items-center justify-between space-y-2 md:mt-2">
+            <a href="/">
+                <h2 class="text-3xl font-bold tracking-tight">FinData</h2>
+            </a>
+            <Support client:load />
         </div>
-        <Content client:load />
+        <IndexContent client:load />
     </main>
 </Layout>
-@/ui/support

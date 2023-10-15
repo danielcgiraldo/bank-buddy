@@ -1,4 +1,4 @@
-import { BestCDT } from "@/ui/bestCDT";
+import { BestCDT } from "@/ui/best-cdt";
 import Indicators from "@/ui/indicators";
 
 export default function OverviewAddon() {

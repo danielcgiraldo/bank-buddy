@@ -5,6 +5,7 @@ import {
     Share2,
     Flag,
     Heart,
+    Key
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -19,7 +20,6 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 export function Support() {
-
     const openLink = (ev: Event) => {
         const target = ev.target as HTMLElement;
         const url = target.dataset.url;
@@ -31,21 +31,22 @@ export function Support() {
             }
             window.open(url, "_blank");
         }
-    }
+    };
 
     const shareButton = () => {
         if (navigator.share) {
-            navigator.share({
-                title: "FinData",
-                text: "FinData",
-                url: "https://findata.vercel.app/",
-            })
+            navigator
+                .share({
+                    title: "FinData",
+                    text: "FinData",
+                    url: "https://findata.vercel.app/",
+                })
                 .then(() => console.log("Successful share"))
                 .catch((error) => console.log("Error sharing", error));
         } else {
             console.log("Share not supported");
         }
-    }
+    };
 
     return (
         <DropdownMenu>
@@ -65,24 +66,46 @@ export function Support() {
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
-                    <DropdownMenuItem onSelect={openLink} data-url="https://github.com/danielcgiraldo/findata">
+                    <DropdownMenuItem
+                        onSelect={openLink}
+                        data-url="https://github.com/danielcgiraldo/findata"
+                    >
                         <Github className="mr-2 h-4 w-4" />
                         <span>Contribuir</span>
                     </DropdownMenuItem>
-                    <DropdownMenuItem onSelect={openLink} data-url="https://github.com/danielcgiraldo/findata/issues">
+                    <DropdownMenuItem
+                        onSelect={openLink}
+                        data-url="https://github.com/danielcgiraldo/findata/issues"
+                    >
                         <Flag className="mr-2 h-4 w-4" />
                         <span>Reportar Problema</span>
                     </DropdownMenuItem>
-                    <DropdownMenuItem onSelect={openLink} data-options="width=500,height=600" data-url="https://www.paypal.com/donate/?hosted_button_id=VUL8F5NECLHK6">
+                    <DropdownMenuItem
+                        onSelect={openLink}
+                        data-options="width=500,height=600"
+                        data-url="https://www.paypal.com/donate/?hosted_button_id=VUL8F5NECLHK6"
+                    >
                         <Heart className="mr-2 h-4 w-4" />
                         <span>Donar</span>
                     </DropdownMenuItem>
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onSelect={openLink} data-url="https://docs.google.com/forms/d/e/1FAIpQLSd8T_7-NArBBDAiuEQNe3VwJ7Fc1iZHXYtYgKKBiLD3JHW57Q/viewform?usp=sf_link">
-                    <MessageSquare className="mr-2 h-4 w-4" />
-                    <span>Contáctanos</span>
-                </DropdownMenuItem>
+                <DropdownMenuGroup>
+                    <DropdownMenuItem
+                        onSelect={openLink}
+                        data-url="/api"
+                    >
+                        <Key className="mr-2 h-4 w-4" />
+                        <span>Credenciales API</span>
+                    </DropdownMenuItem>
+                    <DropdownMenuItem
+                        onSelect={openLink}
+                        data-url="https://docs.google.com/forms/d/e/1FAIpQLSd8T_7-NArBBDAiuEQNe3VwJ7Fc1iZHXYtYgKKBiLD3JHW57Q/viewform?usp=sf_link"
+                    >
+                        <MessageSquare className="mr-2 h-4 w-4" />
+                        <span>Contáctanos</span>
+                    </DropdownMenuItem>
+                </DropdownMenuGroup>
             </DropdownMenuContent>
         </DropdownMenu>
     );
