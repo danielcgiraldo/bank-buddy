@@ -3,7 +3,7 @@ import OverviewAddon from "./overview";
 import { ADDONS } from "@/lib/addons";
 export default function Content() {
     return (
-        <Tabs defaultValue="overview" className="space-y-4 mt-2">
+        <Tabs defaultValue="overview" className="space-y-4 mt-4 md:mt-2">
             <TabsList>
                 <TabsTrigger value="overview">Datos Financieros</TabsTrigger>
                 {

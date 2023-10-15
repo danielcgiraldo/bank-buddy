@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 
 export function BestCDT() {
-    function capitalizeFLetter(string) {
+    function capitalizeFLetter(string: string) {
         return (string.charAt(0).toUpperCase() +
             string.slice(1));
     }
