@@ -12,7 +12,7 @@ const { title } = Astro.props;
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
-        <meta name="description" content="Findata: Tu portal financiero completo con los mejores CDTs, cuentas de ahorro, indicadores económicos, simuladores y más" />
+        <meta name="description" content="Findata: Tu portal financiero completo con los mejores CDTs, cuentas de ahorro, indicadores económicos, simuladores y más." />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
@@ -34,7 +34,7 @@ const { title } = Astro.props;
         <div class="w-full h-full p-5 flex justify-center">
             <div class="md:px-10 max-w-7xl w-full">
                 <slot />
-                <Footer />
+                <Footer client:load />
             </div>
         </div>
     </body>

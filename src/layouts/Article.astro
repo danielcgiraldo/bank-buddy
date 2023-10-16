@@ -49,8 +49,7 @@ const { frontmatter } = Astro.props;
                         <slot />
                     </article>
                 </main>
-                
-                <Footer />
+                <Footer client:load />
             </div>
         </div>
     </body>
