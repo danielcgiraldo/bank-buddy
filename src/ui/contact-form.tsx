@@ -47,7 +47,12 @@ export default function ContactForm() {
     };
     return (
         <Card className="max-w-md w-full">
-            <form action="/v1/contact" ref={formRef} onSubmit={submit} method="POST">
+            <form
+                action="/v1/contact"
+                ref={formRef}
+                onSubmit={submit}
+                method="POST"
+            >
                 <CardHeader>
                     <CardTitle>Contáctanos</CardTitle>
                     <CardDescription>¿Tienes alguna duda?</CardDescription>
@@ -74,7 +79,7 @@ export default function ContactForm() {
                         <Textarea id="msg" required />
                     </div>
                 </CardContent>
-                <CardFooter>
+                <CardFooter className="flex-col gap-4">
                     <Button className="w-full" disabled={loading} type="submit">
                         {loading ? (
                             <>
@@ -85,6 +90,17 @@ export default function ContactForm() {
                             "Continuar"
                         )}
                     </Button>
+                    <p className="text-xs text-muted-foreground">
+                        Este sitio es protegido por hCaptcha y su{" "}
+                        <a href="https://www.hcaptcha.com/privacy" className="hover:text-white hover:underline transition-colors" target="_blank" rel="noopener noreferrer">
+                            Política de Privacidad
+                        </a>{" "}
+                        y{" "}
+                        <a href="https://www.hcaptcha.com/terms" className="hover:text-white hover:underline transition-colors" target="_blank" rel="noopener noreferrer">
+                            Términos de Servicio
+                        </a>{" "}
+                        aplican.
+                    </p>
                 </CardFooter>
                 <HCaptcha
                     sitekey="37ff12d2-e5da-4b5c-b4e1-fce04fdcd8cf"
