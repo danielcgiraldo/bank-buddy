@@ -12,18 +12,20 @@ import { Label } from "@/components/ui/label";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Textarea } from "@/components/ui/textarea";
 import { GraduationCap, User2, DollarSign, Loader2 } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useToast } from "@/components/ui/use-toast";
 import submitForm from "@/lib/form";
+import HCaptcha from "@hcaptcha/react-hcaptcha";
 
 export default function ApiForm() {
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
     const { toast } = useToast();
+    const captchaRef = useRef<HCaptcha>(null);
+    const formRef = useRef<HTMLFormElement>(null);
 
-    const submit = async (ev: SubmitEvent) => {
+    const onVerify = async (token: string) => {
         setLoading(true);
-        ev.preventDefault();
-        const response = await submitForm(ev);
+        const response = await submitForm(formRef.current!);
         setLoading(false);
         if (response.status == "ok") {
             toast({
@@ -35,14 +37,23 @@ export default function ApiForm() {
             toast({
                 title: "Error",
                 description:
-                    "Ha ocurrido un error al enviar tu solicitud. Por favor, intenta nuevamente."
+                    "Ha ocurrido un error al enviar tu solicitud. Por favor, intenta nuevamente.",
             });
         }
-        
+    };
+
+    const submit = async (ev: SubmitEvent) => {
+        ev.preventDefault();
+        captchaRef.current?.execute();
     };
     return (
         <Card className="max-w-md w-full">
-            <form action="/v1/requestAPI" onSubmit={submit} method="POST">
+            <form
+                action="/v1/requestAPI"
+                ref={formRef}
+                onSubmit={submit}
+                method="POST"
+            >
                 <CardHeader>
                     <CardTitle>Credenciales API</CardTitle>
                     <CardDescription>
@@ -51,18 +62,19 @@ export default function ApiForm() {
                 </CardHeader>
                 <CardContent className="grid gap-6">
                     <RadioGroup
-                        defaultValue="card"
+                        defaultValue="personal"
                         className="grid grid-cols-3 gap-4"
+                        name="usecase"
                         required
                     >
                         <div>
                             <RadioGroupItem
-                                value="card"
-                                id="card"
+                                value="personal"
+                                id="personal"
                                 className="peer sr-only"
                             />
                             <Label
-                                htmlFor="card"
+                                htmlFor="personal"
                                 className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                             >
                                 <User2 className="mb-3 h-6 w-6" />
@@ -71,12 +83,12 @@ export default function ApiForm() {
                         </div>
                         <div>
                             <RadioGroupItem
-                                value="paypal"
-                                id="paypal"
+                                value="academic"
+                                id="academic"
                                 className="peer sr-only"
                             />
                             <Label
-                                htmlFor="paypal"
+                                htmlFor="academic"
                                 className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                             >
                                 <GraduationCap className="mb-3 h-6 w-6" />
@@ -85,12 +97,12 @@ export default function ApiForm() {
                         </div>
                         <div>
                             <RadioGroupItem
-                                value="apple"
-                                id="apple"
+                                value="comercila"
+                                id="comercila"
                                 className="peer sr-only"
                             />
                             <Label
-                                htmlFor="apple"
+                                htmlFor="comercila"
                                 className="flex flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground peer-data-[state=checked]:border-primary [&:has([data-state=checked])]:border-primary"
                             >
                                 <DollarSign className="mb-3 h-6 w-6" />
@@ -100,12 +112,18 @@ export default function ApiForm() {
                     </RadioGroup>
                     <div className="grid gap-2">
                         <Label htmlFor="name">Nombre Completo</Label>
-                        <Input id="name" placeholder="John Doe" required />
+                        <Input
+                            id="name"
+                            name="name"
+                            placeholder="John Doe"
+                            required
+                        />
                     </div>
                     <div className="grid gap-2">
                         <Label htmlFor="email">Correo Electrónico</Label>
                         <Input
                             id="email"
+                            name="email"
                             placeholder="ejemplo@ejemplo.com"
                             required
                         />
@@ -119,6 +137,7 @@ export default function ApiForm() {
                             placeholder="Comienza a escribir..."
                         />
                     </div>
+                    <div className="w-full flex justify-center"></div>
                 </CardContent>
                 <CardFooter>
                     <Button className="w-full" disabled={loading} type="submit">
@@ -132,6 +151,21 @@ export default function ApiForm() {
                         )}
                     </Button>
                 </CardFooter>
+                <HCaptcha
+                    sitekey="37ff12d2-e5da-4b5c-b4e1-fce04fdcd8cf"
+                    size="invisible"
+                    ref={captchaRef}
+                    onVerify={onVerify}
+                    onOpen={() => {
+                        setLoading(true);
+                    }}
+                    onClose={() => {
+                        setLoading(false);
+                    }}
+                    onLoad={() => {
+                        setLoading(false);
+                    }}
+                />
             </form>
         </Card>
     );

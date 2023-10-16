@@ -1,6 +1,4 @@
-export default async function submitForm(e: SubmitEvent) {
-    e.preventDefault();
-    const form = e.target as HTMLFormElement;
+export default async function submitForm(form: HTMLFormElement) {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
     const response = await fetch(form.action, {
